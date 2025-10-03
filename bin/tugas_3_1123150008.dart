@@ -1,5 +1,35 @@
-import 'package:tugas_3_1123150008/tugas_3_1123150008.dart' as tugas_3_1123150008;
+class Mahasiswa {
+  // Properties (atribut)
+  String nama;
+  String nim;
+  String jurusan;
+  int angkatan;
 
-void main(List<String> arguments) {
-  print('Hello world: ${tugas_3_1123150008.calculate()}!');
+  // Constructor
+  Mahasiswa({
+    required this.nama,
+    required this.nim,
+    required this.jurusan,
+    required this.angkatan,
+  });
+
+  // Method
+  void tampilkanData() {
+    print("Nama     : $nama");
+    print("NIM      : $nim");
+    print("Jurusan  : $jurusan");
+    print("Angkatan : $angkatan");
+  }
+}
+
+void main() {
+  // Membuat object dari class Mahasiswa
+  var mhs1 = Mahasiswa(
+    nama: "Ilham",
+    nim: "1123150008",
+    jurusan: "Informatika",
+    angkatan: 2022,
+  );
+
+  mhs1.tampilkanData();
 }

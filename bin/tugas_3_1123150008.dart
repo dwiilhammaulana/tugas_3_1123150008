@@ -1,111 +1,111 @@
 class Mahasiswa {
-  // Properties (atribut)
-  String nama;
-  String nim;
-  String jurusan;
-  int angkatan;
+  // Properti
+  String namaLengkap;
+  String nomorInduk;
+  String prodi;
+  int tahunMasuk;
 
   // Constructor
   Mahasiswa({
-    required this.nama,
-    required this.nim,
-    required this.jurusan,
-    required this.angkatan,
+    required this.namaLengkap,
+    required this.nomorInduk,
+    required this.prodi,
+    required this.tahunMasuk,
   });
 
   // Method
   void tampilkanData() {
-    print("Nama     : $nama");
-    print("NIM      : $nim");
-    print("Jurusan  : $jurusan");
-    print("Angkatan : $angkatan");
+    print("Nama     : $namaLengkap");
+    print("NIM      : $nomorInduk");
+    print("Jurusan  : $prodi");
+    print("Angkatan : $tahunMasuk");
   }
 }
 
 class AsistenDosen extends Mahasiswa {
-  String mataKuliah;
+  String mkBimbingan;
 
   AsistenDosen({
-    required String nama,
-    required String nim,
-    required String jurusan,
-    required int angkatan,
-    required this.mataKuliah,
+    required String namaLengkap,
+    required String nomorInduk,
+    required String prodi,
+    required int tahunMasuk,
+    required this.mkBimbingan,
   }) : super(
-          nama: nama,
-          nim: nim,
-          jurusan: jurusan,
-          angkatan: angkatan,
+          namaLengkap: namaLengkap,
+          nomorInduk: nomorInduk,
+          prodi: prodi,
+          tahunMasuk: tahunMasuk,
         );
 
   // Override method
   @override
   void tampilkanData() {
     super.tampilkanData();
-    print("Asisten MK: $mataKuliah");
+    print("Asisten MK: $mkBimbingan");
   }
 }
 
 // Interface (abstract class)
 abstract class Pendaftaran {
-  void daftarMatkul(String matkul);
+  void ambilMatkul(String namaMatkul);
 }
 
 class MahasiswaAktif extends Mahasiswa implements Pendaftaran {
-  List<String> matkulDiambil = [];
+  List<String> daftarMatkul = [];
 
   MahasiswaAktif({
-    required String nama,
-    required String nim,
-    required String jurusan,
-    required int angkatan,
+    required String namaLengkap,
+    required String nomorInduk,
+    required String prodi,
+    required int tahunMasuk,
   }) : super(
-          nama: nama,
-          nim: nim,
-          jurusan: jurusan,
-          angkatan: angkatan,
+          namaLengkap: namaLengkap,
+          nomorInduk: nomorInduk,
+          prodi: prodi,
+          tahunMasuk: tahunMasuk,
         );
 
   @override
-  void daftarMatkul(String matkul) {
-    matkulDiambil.add(matkul);
-    print("$nama berhasil daftar mata kuliah $matkul");
+  void ambilMatkul(String namaMatkul) {
+    daftarMatkul.add(namaMatkul);
+    print("$namaLengkap berhasil ambil mata kuliah $namaMatkul");
   }
 }
 
 void main() {
-  // Buat object mahasiswa biasa
-  var mhs1 = Mahasiswa(
-    nama: "Dwi",
-    nim: "1123150008",
-    jurusan: "Informatika",
-    angkatan: 2022,
+  // Object mahasiswa umum
+  var mahasiswa1 = Mahasiswa(
+    namaLengkap: "Dwi",
+    nomorInduk: "1123150008",
+    prodi: "Informatika",
+    tahunMasuk: 2022,
   );
-  mhs1.tampilkanData();
+  mahasiswa1.tampilkanData();
 
   print("----------");
 
-  // Buat object asisten dosen
-  var asdos = AsistenDosen(
-    nama: "ilham",
-    nim: "1123150009",
-    jurusan: "Sistem Informasi",
-    angkatan: 2023,
-    mataKuliah: "Pemrograman Mobile",
+  // Object asisten dosen
+  var asdos1 = AsistenDosen(
+    namaLengkap: "Ilham",
+    nomorInduk: "1123150009",
+    prodi: "Sistem Informasi",
+    tahunMasuk: 2023,
+    mkBimbingan: "Pemrograman Mobile",
   );
-  asdos.tampilkanData();
+  asdos1.tampilkanData();
 
   print("----------");
 
   // Mahasiswa aktif implementasi interface
-  var mhs2 = MahasiswaAktif(
-    nama: "maulana",
-    nim: "1123150010",
-    jurusan: "Teknik Elektro",
-    angkatan: 2024,
+  var mahasiswa2 = MahasiswaAktif(
+    namaLengkap: "Maulana",
+    nomorInduk: "1123150010",
+    prodi: "Teknik Elektro",
+    tahunMasuk: 2024,
   );
-  mhs2.daftarMatkul("Algoritma");
-  mhs2.daftarMatkul("Basis Data");
-  mhs2.tampilkanData();
-  print("Matkul yang diambil: ${mhs2.matkulDiambil}");
+  mahasiswa2.ambilMatkul("Algoritma");
+  mahasiswa2.ambilMatkul("Basis Data");
+  mahasiswa2.tampilkanData();
+  print("Matkul yang diambil: ${mahasiswa2.daftarMatkul}");
 }
